@@ -1,0 +1,29 @@
+﻿
+<div>
+    @Html.ActionLink("Tell us your problems!", "SubmitGrievances", new { UserId = @ViewBag.UserId })
+    <br />
+    @Html.ActionLink("Check your grievance status", "CheckGStatus", new { UserId = @ViewBag.UserId })
+    <br />
+    @Html.ActionLink("Help", "SubmitIssue")
+    <br />
+    @Html.ActionLink("Check your Issue status", "CheckIStatus", new { UserId = @ViewBag.UserId })
+    <br />
+    @Html.ActionLink("View all clubs", "ViewClubs")
+    <br />
+    @Html.ActionLink("add idea", "Addidea")
+    <br />
+    @Html.ActionLink("Events", "Eventdashboard")
+    <br />
+    @Html.ActionLink("View enrolled clubs", "ViewENClubs")
+    <br />
+    @Html.ActionLink("View Ideas", "ViewIdeas")
+    <br />
+    <br />
+    @Html.ActionLink("Search Ideas", "SearchIdea")
+    <br />
+    @Html.ActionLink("View Social Services", "ViewSocialServices")
+
+    <br />
+    @Html.ActionLink("Logout", "logout", new { id = @ViewBag.UserId })
+</div>
+

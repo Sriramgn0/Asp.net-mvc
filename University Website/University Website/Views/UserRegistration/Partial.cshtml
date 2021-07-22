@@ -1,0 +1,132 @@
+﻿@model University_Website.Models.UserRegistration
+
+
+
+
+@if (ViewBag.User_Name != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("Dear @ViewBag.User_Name \nYour account Successfully Created \nYour User Id is @ViewBag.User_Id");
+            window.location = "/UserRegistration/Index";
+        }
+    </script>
+}
+
+
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+
+        /* The popup form - hidden by default */
+        .form-popup {
+            display: none;
+            position: fixed;
+            top: 50px;
+            right: 520px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+        }
+
+            /* Full-width input fields */
+            .form-container input[type=text], .form-container input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                border: none;
+                background: #f1f1f1;
+            }
+
+                /* When the inputs get focus, do something */
+                .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+                    background-color: #ddd;
+                    outline: none;
+                }
+
+            /* Set a style for the submit/login button */
+            .form-container .btn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                margin-top: 10px;
+                opacity: 0.8;
+                align-content: center;
+            }
+
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+                background-color: red;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+                opacity: 1;
+            }
+    </style>
+</head>
+<body>
+
+
+
+
+    <div class="form-popup" id="myForm">
+        <div class="form-container">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <h1>@ViewBag.qno</h1>
+                @Html.LabelFor(model => model.Security_Question1)
+                @Html.EnumDropDownListFor(model => model.Security_Question1)
+                @Html.LabelFor(model => model.Security_Answer1)
+                @Html.EditorFor(model => model.Security_Answer1)
+
+                @Html.LabelFor(model => model.Security_Question2)
+                @Html.EnumDropDownListFor(model => model.Security_Question2)
+                @Html.LabelFor(model => model.Security_Answer2)
+                @Html.EditorFor(model => model.Security_Answer2)
+
+                @Html.LabelFor(model => model.Security_Question3)
+                @Html.EnumDropDownListFor(model => model.Security_Question3)
+                @Html.LabelFor(model => model.Security_Answer3)
+                @Html.EditorFor(model => model.Security_Answer3)
+
+
+
+
+                <button type="submit" class="btn">Answer</button>
+            }
+
+        </div>
+    </div>
+    @if (ViewBag.Message == "start")
+    {
+        <script type="text/javascript">
+            document.getElementById("myForm").style.display = "block";
+        </script>
+    }
+
+</body>
+</html>

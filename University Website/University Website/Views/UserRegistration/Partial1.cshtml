@@ -1,0 +1,13 @@
+﻿@model University_Website.Models.UserRegistration
+
+@if (ViewBag.User_Id != null)
+{
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            var name = prompt("Please enter your name", "Harry Potter");
+           // alert("Dear @ViewBag.User_Name \nYour account Successfully Created \nYour User Id is @ViewBag.User_Id");
+            window.location = "/UserRegistration/Index";
+        }
+    </script>
+}

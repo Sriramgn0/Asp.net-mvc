@@ -1,0 +1,98 @@
+﻿@model University_Website.Models.Events
+
+<h2>Eventdashboard</h2>
+
+
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            alert("@ViewBag.Message");
+        }
+    </script>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+            @Html.LabelFor(model => model.EventName)
+            @Html.EditorFor(model => model.EventName)
+
+       
+            @Html.LabelFor(model => model.StartDate)
+            @Html.EditorFor(model => model.StartDate)
+            
+
+            @Html.LabelFor(model => model.EndDate)
+            @Html.EditorFor(model => model.EndDate)
+              
+        
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (ViewBag.HasData == "yes")
+{
+    <table class="table">
+        <tr>
+            <th>
+                EventName
+            </th>
+            <th>
+              StartDate
+            </th>
+            <th>
+             EndDate
+            </th>
+            <th>
+               status
+            </th>
+            <th>
+             .Description
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach(var item in ViewBag.events)
+        {
+            <tr>
+                <td>
+                    @item.EventName
+                </td>
+                <td>
+                     @item.StartDate
+                </td>
+                <td>
+                     @item.EndDate
+                </td>
+                <td>
+                    @item.status
+                </td>
+                <td>
+                  @item.Description
+                </td>
+                <td>
+                    @Html.ActionLink("Join", "JoinEvent", new { id = item.EventId }) |
+                    @Html.ActionLink("View Participants", "ViewEventParticipents", new { id = item.EventId })|
+                    @Html.ActionLink("Share", "ShareEvent", new { id = item.EventId, type= "JoinEvent" })
+
+                </td>
+            </tr>
+        }
+
+
+    </table>
+}

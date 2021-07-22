@@ -1,0 +1,93 @@
+﻿@model IEnumerable<University_Website.Models.EventParticipants>
+
+<br />
+@Html.ActionLink("Monthly report", "EventpartReportpdf", new { id = 1 }) |
+@Html.ActionLink("Half Yearly", "EventpartReportpdf", new { id = 6 })|
+@Html.ActionLink("Back to List", "EventpartReportpdf", new { id = 12 })
+<br />
+
+<br />
+@Html.ActionLink("Monthly report", "sspartReportpdf", new { id = 1 }) |
+@Html.ActionLink("Half Yearly", "sspartReportpdf", new { id = 6 })|
+@Html.ActionLink("Back to List", "sspartReportpdf", new { id = 12 })
+<br />
+
+<h2>Attendences Report</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.events.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userRegistration.First_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attendence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userchoice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.events.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userRegistration.First_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Attendence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Review)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userchoice)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<h2>Attendences Report</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            SocialServiceName
+        </th>
+        <th>
+            First_Name
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.SocialserviceParticipants)
+    {
+        <tr>
+            <td>
+                @item.socialService.SocialServiceName
+            </td>
+            <td>
+                @item.userRegistration.First_Name
+            </td>
+
+        </tr>
+    }
+
+</table>

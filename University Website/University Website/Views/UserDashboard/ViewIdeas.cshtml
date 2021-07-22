@@ -1,0 +1,75 @@
+﻿@model IEnumerable<University_Website.Models.Idea>
+
+@{
+    ViewBag.Title = "ViewIdeas";
+}
+
+<h2>ViewIdeas</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            User Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdeaTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmissionDate)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.AdminReview)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfVotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOFDevote)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in ViewBag.data) {
+    <tr>
+        <td>
+            @item.username
+        </td>
+        <td>
+            @item.ideas.IdeaTitle
+        </td>
+        <td>
+            @item.ideas.Description)
+        </td>
+        <td>
+            @item.ideas.SubmissionDate)
+        </td>
+        <td>
+            @item.ideas.AdminReview
+        </td>
+        <td>
+            @item.ideas.Status
+        </td>
+        <td>
+            @item.ideas.NoOfVotes
+        </td>
+        <td>
+            @item.ideas.NoOFDevote
+        </td>
+        <td>
+            @item.vote
+        </td>
+        <td>
+            @Html.ActionLink("Vote", "VoteforIdea", new { id = item.ideas.IdeaId }) |
+            @Html.ActionLink("Comment", "CommentForIdea", new { id = item.ideas.IdeaId }) 
+        </td>
+    </tr>
+}
+
+</table>

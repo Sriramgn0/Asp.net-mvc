@@ -1,0 +1,46 @@
+﻿@model University_Website.Models.Idea
+
+<h2>add Idea</h2>
+
+@if (ViewBag.ClubList != null)
+{
+    @Html.DropDownListFor(m => m.ClubID, ViewBag.ClubList as SelectList, "Select Club Name", new { @class = "form-control" })
+
+}
+
+@Html.DropDownListFor(m => m.CategoryId, new SelectList(""), "Select Category Name", new { @class = "form-control" })
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $("#ClubID").change(function () {
+
+            var cid = $(this).val();
+            debugger
+            $.ajax({
+
+                type: "Post",
+                url: "UserDashboard/GetCategory/ClubID=" + cid,
+                contentType:"html",
+                success: function (response) {
+                  debugger
+                    $("#CategoryId").empty();
+                    $("#CategoryId").append(response);
+
+                }
+
+            })
+
+        })
+
+    })
+
+</script>
+
+

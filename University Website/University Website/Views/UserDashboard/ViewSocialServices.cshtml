@@ -1,0 +1,51 @@
+﻿@model IEnumerable<University_Website.Models.SocialService>
+
+@{
+    ViewBag.Title = "ViewSocialServices";
+}
+
+<h2>ViewSocialServices</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SocialServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfVolunteer)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SocialServiceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfVolunteer)
+        </td>
+        <td>
+            @Html.ActionLink("Volunteer for this social service", "JoinAsVolunteer", new { id=item.SocialServiceId }) |
+            @Html.ActionLink("View all volunteers", "ViewVolunteers", new { id=item.SocialServiceId }) |
+            @Html.ActionLink("Leave this Social Service", "LeaveAsVolunteer", new { id=item.SocialServiceId })
+        </td>
+    </tr>
+}
+
+</table>

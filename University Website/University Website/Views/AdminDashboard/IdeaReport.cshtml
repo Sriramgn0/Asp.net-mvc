@@ -1,0 +1,88 @@
+﻿@model IEnumerable<University_Website.Models.Idea>
+
+@Html.ActionLink("Monthly report", "IdeaReportpdf", new { id = 1 })
+<br />
+@Html.ActionLink("Half Yearly", "IdeaReportpdf", new { id = 6 })
+<br />
+@Html.ActionLink("Back to List", "IdeaReportpdf", new { id = 12 })
+<br />
+<h2>IdeaReport</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.category.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClubID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdeaTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubmissionDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdminReview)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfVotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOFDevote)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClubID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdeaTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubmissionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminReview)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfVotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOFDevote)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdeaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdeaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdeaId })
+            </td>
+        </tr>
+    }
+
+</table>

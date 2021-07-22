@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "LeaveClub";
+}
+
+<h2>LeaveClub</h2>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            alert("@ViewBag.Message");
+            window.location = "/UserDashboard/ViewClubs";
+        }
+    </script>
+}
+

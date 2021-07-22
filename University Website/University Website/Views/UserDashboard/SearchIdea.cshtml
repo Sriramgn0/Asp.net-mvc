@@ -1,0 +1,125 @@
+﻿@model University_Website.Models.Idea
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $("#ClubID").change(function () {
+            $.get("/UserDashboard/GetCategory", { ClubId: $("#ClubID").val() }, function (data) {
+                $("#CategoryId").empty();
+                $.each(data, function (index, row) {
+                    $("#CategoryId").append("<option value='" + row.CategoryID + "'>" + row.CategoryName + "</option>")
+                });
+            });
+        })
+    });
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Idea</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        @Html.LabelFor(model => model.ClubID, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.DropDownListFor(model => model.ClubID, ViewBag.ClubList as SelectList, "--Select Club--", new { @class = "form-control" })
+
+        @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.DropDownListFor(model => model.CategoryId, new SelectList(" "), "--Select Category--", new { @class = "form-control" })
+
+        @Html.LabelFor(model => model.IdeaTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.EditorFor(model => model.IdeaTitle, new { htmlAttributes = new { @class = "form-control" } })
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@if (ViewBag.HasData == "yes")
+{
+<table class="table">
+    <tr>
+        <th>
+           CategoryName
+        </th>
+        <th>
+            ClubID
+        </th>
+        <th>
+           IdeaTitle
+        </th>
+        <th>
+           Description
+        </th>
+        <th>
+          SubmissionDate
+        </th>
+        <th>
+          UserId
+        </th>
+        <th>
+         AdminReview
+        </th>
+        <th>
+           Status
+        </th>
+        <th>
+           NoOfVotes
+        </th>
+        <th>
+           NoOFDevote
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.ideas)
+    {
+        <tr>
+            <td>
+                @item.category.CategoryName
+            </td>
+            <td>
+                @item.ClubID
+            </td>
+            <td>
+                @item.IdeaTitle
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.SubmissionDate
+            </td>
+            <td>
+                @item.UserId
+            </td>
+            <td>
+                @item.AdminReview
+            </td>
+            <td>
+                @item.Status
+            </td>
+            <td>
+                @item.NoOfVotes
+            </td>
+            <td>
+                @item.NoOFDevote
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdeaId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdeaId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdeaId })
+            </td>
+        </tr>
+    }
+
+</table>
+}

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "DeleteMember";
+}
+
+<h2>DeleteMember</h2>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            alert("@ViewBag.Message");
+            window.location = "/AdminDashboard/Dashboard";
+        }
+    </script>
+}
+

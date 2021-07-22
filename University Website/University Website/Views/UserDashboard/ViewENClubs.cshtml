@@ -1,0 +1,45 @@
+﻿@model IEnumerable<University_Website.Models.ClubMember>
+
+@{
+    ViewBag.Title = "ViewENClubs";
+}
+
+<h2>ViewENClubs</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Club.ClubName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRegistration.First_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Club.ClubName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserRegistration.First_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td>
+            @Html.ActionLink("Leave Club", "LeaveClub", new { Cid = item.ClubId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ClubMemberId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ClubMemberId })
+        </td>
+    </tr>
+}
+
+</table>

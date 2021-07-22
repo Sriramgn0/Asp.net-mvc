@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "JoinClub";
+}
+
+<h2>JoinClub</h2>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            alert("@ViewBag.Message");
+            window.location = "/UserDashboard/ViewClubs";
+        }
+    </script>
+}
+@if (ViewBag.Message1 != null)
+{
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            alert("@ViewBag.Message1");
+            window.location = "/UserDashboard/ViewClubs";
+        }
+    </script>
+}
+

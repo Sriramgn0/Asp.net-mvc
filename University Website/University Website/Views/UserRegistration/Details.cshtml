@@ -1,0 +1,116 @@
+﻿@model University_Website.Models.UserRegistration
+
+<div>
+    <h4>UserRegistration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.First_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.First_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Last_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Last_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Security_Question1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Security_Question1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Security_Answer1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Security_Answer1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Security_Question2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Security_Question2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Security_Answer2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Security_Answer2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Security_Question3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Security_Question3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Security_Answer3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Security_Answer3)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Logout", "logout", new { id = Model.UserID }) |
+    @Html.ActionLink("Back", "Index")
+</p>
